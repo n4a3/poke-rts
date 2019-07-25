@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/poke-rts/static/js/main.450792ed.chunk.js",
+    "main.js.map": "/poke-rts/static/js/main.450792ed.chunk.js.map",
+    "runtime~main.js": "/poke-rts/static/js/runtime~main.52339882.js",
+    "runtime~main.js.map": "/poke-rts/static/js/runtime~main.52339882.js.map",
+    "static/js/2.3a83dad0.chunk.js": "/poke-rts/static/js/2.3a83dad0.chunk.js",
+    "static/js/2.3a83dad0.chunk.js.map": "/poke-rts/static/js/2.3a83dad0.chunk.js.map",
+    "index.html": "/poke-rts/index.html",
+    "precache-manifest.4610fc1dcfefd43e0fa03b83f1a963f9.js": "/poke-rts/precache-manifest.4610fc1dcfefd43e0fa03b83f1a963f9.js",
+    "service-worker.js": "/poke-rts/service-worker.js"
+  }
+}
