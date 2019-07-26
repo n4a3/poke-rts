@@ -26,7 +26,11 @@ class PokemonList implements IPokemonList {
   fetchPokemonList() {
     this.state = "fetching";
     pokeapi.fetchPokemons(this.currentOffset).then(
-      action("fetched successful!", (data: any) => {
+      action("response from service", (data: any) => {
+        if (data.error) {
+          this.state = "error";
+          return;
+        }
         this.items = data.data.results;
         this.maxOffset = Math.trunc(data.data.count / 20) * 20;
         this.state = "success";

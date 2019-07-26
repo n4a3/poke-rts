@@ -23,9 +23,13 @@ class PokemonInfo implements IPokemonInfo {
   fetchPokemon(id: number) {
     this.state = "fetching";
     pokeapi.fetchPokemon(id).then(
-      action("fetched successful!", (pokemon: any) => {
-        const { id, name, weight, height } = pokemon.data;
-        const image = pokemon.data.sprites.front_default;
+      action("response from service", (data: any) => {
+        if (data.error) {
+          this.state = "error";
+          return;
+        }
+        const { id, name, weight, height } = data.data;
+        const image = data.data.sprites.front_default;
         this.id = id;
         this.name = name;
         this.weight = weight;
