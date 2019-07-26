@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { observer, inject } from "mobx-react";
 
 import { IPokemonList, IPokemonItem } from "../../../stores/PokemonListStore";
@@ -25,32 +25,29 @@ export default class ItemList extends Component<InjectedProps> {
 
   render() {
     const { items, state } = this.props.pokemonListStore!;
-    if (state === "fetching") {
-      return <Wrapper>loading...</Wrapper>;
-    }
-    if (state === "error") {
-      return <Wrapper>error</Wrapper>;
-    }
-    if (state === "success") {
-      const { prevOffset, nextOffset } = this.props.pokemonListStore!;
-      return (
-        <Wrapper>
-          <List>
-            {items.map((item: IPokemonItem, index) => {
-              return (
-                <Item key={index} url={item.url}>
-                  {item.name}
-                </Item>
-              );
-            })}
-          </List>
-          <Buttons>
-            <Button onClick={() => prevOffset()}>Prev</Button>
-            <Button onClick={() => nextOffset()}>Next</Button>
-          </Buttons>
-        </Wrapper>
-      );
-    }
-    return <Wrapper />;
+    const { prevOffset, nextOffset } = this.props.pokemonListStore!;
+    return (
+      <Wrapper>
+        {state === "fetching" ? "loading..." : null}
+        {state === "error" ? "error" : null}
+        {state === "success" ? (
+          <Fragment>
+            <List>
+              {items.map((item: IPokemonItem, index) => {
+                return (
+                  <Item key={index} url={item.url}>
+                    {item.name}
+                  </Item>
+                );
+              })}
+            </List>
+            <Buttons>
+              <Button onClick={() => prevOffset()}>Prev</Button>
+              <Button onClick={() => nextOffset()}>Next</Button>
+            </Buttons>
+          </Fragment>
+        ) : null}
+      </Wrapper>
+    );
   }
 }

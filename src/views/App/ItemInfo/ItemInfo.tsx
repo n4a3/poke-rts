@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { inject, observer } from "mobx-react";
 
 import { IPokemonInfo } from "../../../stores/PokemonInfoStore";
@@ -20,25 +20,23 @@ export default class ItemInfo extends Component<InjectedProps> {
       image,
       state
     } = this.props.pokemonInfoStore!;
-    if (state === "fetching") {
-      return <Card>loading...</Card>;
-    }
-    if (state === "error") {
-      return <Card>error</Card>;
-    }
-    if (state === "success") {
-      return (
-        <Card>
-          <Name>
-            {name} | ID: {id}
-          </Name>
-          <Desc>
-            Weight: {weight} | Height: {height}
-          </Desc>
-          <Pic src={image!} />
-        </Card>
-      );
-    }
-    return <Card />;
+
+    return (
+      <Card>
+        {state === "fetching" ? "loading..." : null}
+        {state === "error" ? "error" : null}
+        {state === "success" ? (
+          <Fragment>
+            <Name>
+              {name} | ID: {id}
+            </Name>
+            <Desc>
+              Weight: {weight} | Height: {height}
+            </Desc>
+            <Pic src={image!} />
+          </Fragment>
+        ) : null}
+      </Card>
+    );
   }
 }
