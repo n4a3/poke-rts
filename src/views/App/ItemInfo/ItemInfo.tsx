@@ -1,13 +1,9 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 
-import { IPokemonInfo } from "../../stores/PokemonInfoStore";
+import { IPokemonInfo } from "../../../stores/PokemonInfoStore";
 
-const Card = styled.div`
-  background-color: #eceee1;
-  color: blueviolet;
-`;
+import { Card, Pic, Name, Desc } from "./ItemInfo.styles";
 
 interface InjectedProps {
   pokemonInfoStore?: IPokemonInfo;
@@ -25,24 +21,24 @@ export default class ItemInfo extends Component<InjectedProps> {
       state
     } = this.props.pokemonInfoStore!;
     if (state === "fetching") {
-      return "loading...";
+      return <Card>loading...</Card>;
     }
     if (state === "error") {
-      return "error";
+      return <Card>error</Card>;
     }
     if (state === "success") {
       return (
         <Card>
-          <h2>
+          <Name>
             {name} | ID: {id}
-          </h2>
-          <p>
+          </Name>
+          <Desc>
             Weight: {weight} | Height: {height}
-          </p>
-          <img src={image!} />
+          </Desc>
+          <Pic src={image!} />
         </Card>
       );
     }
-    return null;
+    return <Card />;
   }
 }

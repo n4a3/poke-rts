@@ -1,8 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import { inject } from "mobx-react";
 
-import { IPokemonInfo } from "../../../stores/PokemonInfoStore";
+import { IPokemonInfo } from "../../../../stores/PokemonInfoStore";
+
+import SItem from "./Item.styles";
 
 interface IItem {
   children: string;
@@ -12,13 +13,6 @@ interface IItem {
 interface InjectedProps extends IItem {
   pokemonInfoStore?: IPokemonInfo;
 }
-
-const SItem = styled.li`
-  padding: 1rem;
-  border: 1px solid #000000;
-  margin-top: -1px;
-  margin-left: -1px;
-`;
 
 const Item: React.FC<InjectedProps> = ({ children, url, pokemonInfoStore }) => {
   const getInfo = () => {
