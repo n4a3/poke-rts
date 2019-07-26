@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ded1bd54f9ad08851c7caa83a53da2aa",
+    "revision": "228d701ae1ebc26082b7ff593381c0ae",
     "url": "/poke-rts/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/poke-rts/static/js/2.174ffd74.chunk.js"
   },
   {
-    "revision": "e2feb1e41c9ad057e0fe",
-    "url": "/poke-rts/static/js/main.eb1fa565.chunk.js"
+    "revision": "49104dc75d426ce9e443",
+    "url": "/poke-rts/static/js/main.833e6b4e.chunk.js"
   },
   {
     "revision": "542119caa7accc1d1d9c",
